@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Facultad de la Universidad Nacional de Jujuy</title>
+    <link data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    
+    <header class="bg-primary text-white text-center py-3">
+        <div class="container">
+            <img src="/src/main/resources/static/images/LogoUnju.png" alt="Logotipo" class="mb-2" style="height: 50px;">
+            <h1>Facultad de Ciencias Exactas</h1>
+            <p class="lead">Flammam Tvam Hoc Foco Accende lat. "Enciende tu antorcha en este fuego"</p>
+        </div>
+    </header>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">UNJu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Carreras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Noticias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="container my-4">
+        <div class="row">
+           
+            <aside class="col-md-3 mb-4">
+                <div class="list-group">
+                    <a href="https://virtual.unju.edu.ar/bibliotecas/" class="list-group-item list-group-item-action">Biblioteca</a>
+                    <a href="https://www.fi.unju.edu.ar/secretarias/sec-academica/calendario-academico.html" class="list-group-item list-group-item-action">Calendario Académico</a>
+                </div>
+            </aside>
+
+            
+            <main class="col-md-9">
+                <section class="mb-4">
+                    <h2>Sobre Nosotros</h2>
+                    <p>La Universidad Nacional de Jujuy (UNJ o UNJu) es una universidad pública argentina ubicada en San Salvador de Jujuy, provincia de Jujuy. Fundada en 1973, cuenta con cuatro facultades y cinco institutos, donde cursan sus carreras alrededor de 25 000 estudiantes. Hay 40 mil usuarios de alumnos en UNJu Virtual. Su Rector desde 2014 es el Licenciado Rodolfo Tecchi hasta la actualidad</p>
+                </section>
+
+                <section>
+                    <h2>Noticias Recientes</h2>
+                    <article class="mb-3">
+                        <h3>DEL 21 AL 25 DE OCTUBRE ARGENTINA SERÁ SEDE EL 8° SIMPOSIO INTERNACIONAL DE BIOFUMIGACIÓN, ABONOS VERDES, Y CULTIVOS DE COBERTURA</h3>
+                        <p>Esta iniciativa, que se desarrolla bajo el lema “Plantas al servicio de la salud, del suelo y los cultivos”, es un espacio de actualización acerca de las tendencias mundiales en estas técnicas, que, a través del uso de plantas y sus subproductos permiten mejorar la sanidad y calidad del suelo y los cultivos.</p>
+                    </article>
+                    <article class="mb-3">
+                        <h3>LA UNIVERSIDAD NACIONAL DE JUJUY RECIBIÓ A OCHO NUEVOS EGRESADOS DE LA TECNICATURA EN GESTIÓN UNIVERSITARIA</h3>
+                        <p>La Tecnicatura en Gestión Universitaria es una carrera aprobada por Resolución de Consejo Superior Nº 0239/10 y por Resolución Ministerial Nº 1667/14 y está destinada al personal no docente de la UNJu.</p>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+
+   
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>Dirección: Av. Bolivia 1239, Y4600 San Salvador de Jujuy, Jujuy</p>
+            <p>Teléfono: (0388) 422-1515</p>
+            <p>Email: consultas@unju.edu.ar</p>
+            <div>
+                <a href="https://www.facebook.com/universidadnacionaldejujuy" class="text-white me-3">Facebook</a>
+                <a href="https://x.com/home" class="text-white me-3">Twitter</a>
+                <a href="https://www.instagram.com/fiunju/" class="text-white">Instagram</a>
+            </div>
+            <p class="mt-3">&copy; 2024 Universidad Nacional de Jujuy. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
