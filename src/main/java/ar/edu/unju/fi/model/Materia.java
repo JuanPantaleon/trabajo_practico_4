@@ -1,5 +1,7 @@
 package ar.edu.unju.fi.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Materia {
 	
     private String codigo;
@@ -8,6 +10,7 @@ public class Materia {
     private int cantidadHoras;
     private String modalidad;
     private Docente docente;
+    @Autowired
     private Carrera carrera;
     
 	public Materia(String codigo, String nombre, String curso, int cantidadHoras, String modalidad, Docente docente,
