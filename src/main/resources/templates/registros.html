@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/header :: head"></head>
+<body>
+    <header th:replace="layouts/header :: header"></header>
+
+    <div class="container my-4">
+        <h2>Registro de Nuevos Elementos</h2>
+		<a href="/listados" class="btn btn-secondary mb-4">Ver Listados</a>
+		
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Nuevo Alumno</h3>
+                <form action="/alumnos/guardar" method="post">
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="number" class="form-control" id="dni" name="dni" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="domicilio" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control" id="domicilio" name="domicilio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lu" class="form-label">LU</label>
+                        <input type="text" class="form-control" id="lu" name="lu" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Alumno</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Nuevo Docente</h3>
+                <form action="/docentes/guardar" method="post">
+                    <div class="mb-3">
+                        <label for="legajo" class="form-label">Legajo</label>
+                        <input type="number" class="form-control" id="legajo" name="legajo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" name="telefono" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Docente</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Nueva Carrera</h3>
+                <form action="/carreras/guardar" method="post">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label">Código</label>
+                        <input type="number" class="form-control" id="codigo" name="codigo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantAnios" class="form-label">Cantidad de Años</label>
+                        <input type="number" class="form-control" id="cantAnios" name="cantAnios" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estado" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="estado" name="estado" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Carrera</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Nueva Materia</h3>
+                <form action="/materias/guardar" method="post">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label">Código</label>
+                        <input type="number" class="form-control" id="codigo" name="codigo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="curso" class="form-label">Curso</label>
+                        <input type="text" class="form-control" id="curso" name="curso" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidadHoras" class="form-label">Cantidad de Horas</label>
+                        <input type="number" class="form-control" id="cantidadHoras" name="cantidadHoras" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modalidad" class="form-label">Modalidad</label>
+                        <select class="form-control" id="modalidad" name="modalidad" required>
+                            <option value="Presencial">Presencial</option>
+                            <option value="Virtual">Virtual</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="docente" class="form-label">Docente</label>
+                        <select class="form-control" id="docente" name="docente" required>
+                            <option th:each="docente : ${docentes}" th:value="${docente.legajo}" th:text="${docente.nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carrera" class="form-label">Carrera</label>
+                        <select class="form-control" id="carrera" name="carrera" required>
+                            <option th:each="carrera : ${carreras}" th:value="${carrera.codigo}" th:text="${carrera.nombre}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Materia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+</body>
+</html>

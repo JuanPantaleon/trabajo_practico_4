@@ -9,4 +9,14 @@ public class MainController {
 	public String getIndex() {
 	      return "index";
 	  }
+	
+	@GetMapping("/registros")
+	public String getRegistros() {
+		return"registros";
+	}
+	
+	@GetMapping("/listados")
+	public String getListados() {
+		return"listados";
+	}
 }

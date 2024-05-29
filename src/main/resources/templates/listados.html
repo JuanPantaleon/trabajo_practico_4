@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/header :: head"></head>
+<body>
+    <header th:replace="layouts/header :: header"></header>
+
+    <div class="container my-4">
+        <h2>Listados</h2>
+
+        <div class="mb-4">
+            <h3>Alumnos</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Domicilio</th>
+                        <th>LU</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="alumno : ${alumnos}">
+                        <td th:text="${alumno.dni}"></td>
+                        <td th:text="${alumno.nombre}"></td>
+                        <td th:text="${alumno.apellido}"></td>
+                        <td th:text="${alumno.email}"></td>
+                        <td th:text="${alumno.telefono}"></td>
+                        <td th:text="${alumno.fechaNacimiento}"></td>
+                        <td th:text="${alumno.domicilio}"></td>
+                        <td th:text="${alumno.lu}"></td>
+                        <td>
+                            <a th:href="@{/alumnos/editar/{dni}(dni=${alumno.dni})}" class="btn btn-primary btn-sm">Editar</a>
+                            <a th:href="@{/alumnos/eliminar/{dni}(dni=${alumno.dni})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-4">
+            <h3>Docentes</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Legajo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="docente : ${docentes}">
+                        <td th:text="${docente.legajo}"></td>
+                        <td th:text="${docente.nombre}"></td>
+                        <td th:text="${docente.apellido}"></td>
+                        <td th:text="${docente.email}"></td>
+                        <td th:text="${docente.telefono}"></td>
+                        <td>
+                            <a th:href="@{/docentes/editar/{legajo}(legajo=${docente.legajo})}" class="btn btn-primary btn-sm">Editar</a>
+                            <a th:href="@{/docentes/eliminar/{legajo}(legajo=${docente.legajo})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-4">
+            <h3>Carreras</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Cantidad de Años</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="carrera : ${carreras}">
+                        <td th:text="${carrera.codigo}"></td>
+                        <td th:text="${carrera.nombre}"></td>
+                        <td th:text="${carrera.cantAnios}"></td>
+                        <td th:text="${carrera.estado}"></td>
+                        <td>
+                            <a th:href="@{/carreras/editar/{codigo}(codigo=${carrera.codigo})}" class="btn btn-primary btn-sm">Editar</a>
+                            <a th:href="@{/carreras/eliminar/{codigo}(codigo=${carrera.codigo})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mb-4">
+            <h3>Materias</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Curso</th>
+                        <th>Cantidad de Horas</th>
+                        <th>Modalidad</th>
+                        <th>Docente</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="materia : ${materias}">
+                        <td th:text="${materia.codigo}"></td>
+                        <td th:text="${materia.nombre}"></td>
+                        <td th:text="${materia.curso}"></td>
+                        <td th:text="${materia.cantidadHoras}"></td>
+                        <td th:text="${materia.modalidad}"></td>
+                        <td th:text="${materia.docente.nombre}"></td>
+                        <td th:text="${materia.carrera.nombre}"></td>
+                        <td>
+                            <a th:href="@{/materias/editar/{codigo}(codigo=${materia.codigo})}" class="btn btn-primary btn-sm">Editar</a>
+                            <a th:href="@{/materias/eliminar/{codigo}(codigo=${materia.codigo})}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer th:replace="layouts/footer :: footer"></footer>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +14,13 @@ import ar.edu.unju.fi.model.Docente;
 @Controller
 @RequestMapping("/docentes")
 public class DocenteController {
-	@GetMapping("/listar")
+	@Autowired
+    private DocenteCollection docenteCollection;
+
+    @GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("docentes", DocenteCollection.listar());
-        return "carreras";
+        model.addAttribute("docentes", docenteCollection.listar());
+        return "listados";
     }
 
     @GetMapping("/nuevo")
@@ -27,25 +31,26 @@ public class DocenteController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("docente") Docente docente) {
-        DocenteCollection.agregar(docente);
+        docenteCollection.agregar(docente);
         return "redirect:/docentes/listar";
     }
 
     @GetMapping("/editar/{legajo}")
     public String editar(@PathVariable("legajo") String legajo, Model model) {
-        model.addAttribute("docente", DocenteCollection.buscar(legajo));
+        Docente docente = docenteCollection.buscar(legajo);
+        model.addAttribute("docente", docente);
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("docente") Docente docente) {
-        DocenteCollection.modificar(docente);
+        docenteCollection.modificar(docente);
         return "redirect:/docentes/listar";
     }
 
     @GetMapping("/eliminar/{legajo}")
     public String eliminar(@PathVariable("legajo") String legajo) {
-        DocenteCollection.eliminar(legajo);
+        docenteCollection.eliminar(legajo);
         return "redirect:/docentes/listar";
     }
 }

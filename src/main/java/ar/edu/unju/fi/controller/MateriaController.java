@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,39 +14,53 @@ import ar.edu.unju.fi.model.Materia;
 @Controller
 @RequestMapping("/materias")
 public class MateriaController {
-	@GetMapping("/listar")
+	@Autowired
+    private MateriaCollection materiaCollection;
+
+    @Autowired
+    private DocenteCollection docenteCollection;
+
+    @Autowired
+    private CarreraCollection carreraCollection;
+
+    @GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("materias", MateriaCollection.listar());
-        return "carreras";
+        model.addAttribute("materias", materiaCollection.listar());
+        return "listados";
     }
 
-    @GetMapping("/nueva")
-    public String nueva(Model model) {
+    @GetMapping("/nuevo")
+    public String nuevo(Model model) {
         model.addAttribute("materia", new Materia());
+        model.addAttribute("docentes", docenteCollection.listar());
+        model.addAttribute("carreras", carreraCollection.listar());
         return "registros";
     }
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("materia") Materia materia) {
-        MateriaCollection.agregar(materia);
+        materiaCollection.agregar(materia);
         return "redirect:/materias/listar";
     }
 
     @GetMapping("/editar/{codigo}")
     public String editar(@PathVariable("codigo") String codigo, Model model) {
-        model.addAttribute("materia", MateriaCollection.buscar(codigo));
+        Materia materia = materiaCollection.buscar(codigo);
+        model.addAttribute("materia", materia);
+        model.addAttribute("docentes", docenteCollection.listar());
+        model.addAttribute("carreras", carreraCollection.listar());
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("materia") Materia materia) {
-        MateriaCollection.modificar(materia);
+        materiaCollection.modificar(materia);
         return "redirect:/materias/listar";
     }
 
     @GetMapping("/eliminar/{codigo}")
     public String eliminar(@PathVariable("codigo") String codigo) {
-        MateriaCollection.eliminar(codigo);
+        materiaCollection.eliminar(codigo);
         return "redirect:/materias/listar";
     }
 }
