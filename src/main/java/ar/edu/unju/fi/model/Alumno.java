@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Alumno {
 	
-	private String dni;
+	private int dni;
     private String nombre;
     private String apellido;
     private String email;
     private String telefono;
     private Date fechaNacimiento;
     private String domicilio;
-    private String lu;
+    private int lu;
     
-	public Alumno(String dni, String nombre, String apellido, String email, String telefono, Date fechaNacimiento,
-			String domicilio, String lu) {
+	public Alumno(int dni, String nombre, String apellido, String email, String telefono, Date fechaNacimiento,
+			String domicilio, int lu) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -25,10 +25,11 @@ public class Alumno {
 		this.domicilio = domicilio;
 		this.lu = lu;
 	}
-	public String getDni() {
+	
+	public int getDni() {
 		return dni;
 	}
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {
@@ -67,10 +68,10 @@ public class Alumno {
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}
-	public String getLu() {
+	public int getLu() {
 		return lu;
 	}
-	public void setLu(String lu) {
+	public void setLu(int lu) {
 		this.lu = lu;
 	}
     
