@@ -21,18 +21,14 @@ public class MateriaCollection {
     }
 
     public static void modificar(Materia materia) {
-        Materia existente = buscar(materia.getCodigo());
-        if (existente != null) {
-            int index = materias.indexOf(existente);
+        int index = materias.indexOf(buscar(materia.getCodigo()));
+        if (index >= 0) {
             materias.set(index, materia);
         }
     }
 
     public static void eliminar(String codigo) {
-        Materia materia = buscar(codigo);
-        if (materia != null) {
-            materias.remove(materia);
-        }
+        materias.removeIf(m -> m.getCodigo() == codigo);
     }
 }
 

@@ -21,17 +21,13 @@ public class CarreraCollection {
     }
 
     public static void modificar(Carrera carrera) {
-        Carrera existente = buscar(carrera.getCodigo());
-        if (existente != null) {
-            int index = carreras.indexOf(existente);
+        int index = carreras.indexOf(buscar(carrera.getCodigo()));
+        if (index >= 0) {
             carreras.set(index, carrera);
         }
     }
 
     public static void eliminar(String codigo) {
-        Carrera carrera = buscar(codigo);
-        if (carrera != null) {
-            carreras.remove(carrera);
-        }
+        carreras.removeIf(c -> c.getCodigo() == codigo);
     }
 }

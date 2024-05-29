@@ -2,146 +2,160 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layouts/header :: head"></head>
 <body>
-    <header th:replace="layouts/header :: header"></header>
-
+	
+	<header th:replace="~{layouts/header :: header}"></header>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		        <div class="container">
+		            <a class="navbar-brand" href="#">UNJU</a>
+		            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		                <span class="navbar-toggler-icon"></span>
+		            </button>
+		            <div class="collapse navbar-collapse" id="navbarNav">
+		                <ul class="navbar-nav">
+		                    <li class="nav-item">
+		                        <a class="nav-link" href="#">Inicio</a>
+		                    </li>
+		                    <li class="nav-item">
+		                        <a class="nav-link" href="#">Acerca de</a>
+		                    </li>
+		                    <li class="nav-item">
+		                        <a class="nav-link" href="#">Carreras</a>
+		                    </li>
+		                    <li class="nav-item">
+		                        <a class="nav-link" href="#">Noticias</a>
+		                    </li>
+		                    <li class="nav-item">
+		                        <a class="nav-link" href="#">Contacto</a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		    </nav>
+			
     <div class="container my-4">
-        <h2>Registro de Nuevos Elementos</h2>
-		<a href="/listados" class="btn btn-secondary mb-4">Ver Listados</a>
-		
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Nuevo Alumno</h3>
-                <form action="/alumnos/guardar" method="post">
-                    <div class="mb-3">
-                        <label for="dni" class="form-label">DNI</label>
-                        <input type="number" class="form-control" id="dni" name="dni" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="domicilio" class="form-label">Domicilio</label>
-                        <input type="text" class="form-control" id="domicilio" name="domicilio" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="lu" class="form-label">LU</label>
-                        <input type="text" class="form-control" id="lu" name="lu" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Alumno</button>
-                </form>
+        <h2>Registrar Nuevo Alumno</h2>
+        <form th:action="@{/alumnos/guardar}" th:object="${alumno}" method="post">
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" class="form-control" id="dni" th:field="*{dni}" required>
             </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+            </div>
+            <div class="form-group">
+                <label for="domicilio">Domicilio:</label>
+                <input type="text" class="form-control" id="domicilio" th:field="*{domicilio}" required>
+            </div>
+            <div class="form-group">
+                <label for="lu">LU:</label>
+                <input type="text" class="form-control" id="lu" th:field="*{lu}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
 
-            <div class="col-md-6">
-                <h3>Nuevo Docente</h3>
-                <form action="/docentes/guardar" method="post">
-                    <div class="mb-3">
-                        <label for="legajo" class="form-label">Legajo</label>
-                        <input type="number" class="form-control" id="legajo" name="legajo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Docente</button>
-                </form>
+        <h2>Registrar Nuevo Docente</h2>
+        <form th:action="@{/docentes/guardar}" th:object="${docente}" method="post">
+            <div class="form-group">
+                <label for="legajo">Legajo:</label>
+                <input type="text" class="form-control" id="legajo" th:field="*{legajo}" required>
             </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
 
-            <div class="col-md-6">
-                <h3>Nueva Carrera</h3>
-                <form action="/carreras/guardar" method="post">
-                    <div class="mb-3">
-                        <label for="codigo" class="form-label">Código</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cantAnios" class="form-label">Cantidad de Años</label>
-                        <input type="number" class="form-control" id="cantAnios" name="cantAnios" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="estado" class="form-label">Estado</label>
-                        <input type="text" class="form-control" id="estado" name="estado" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Carrera</button>
-                </form>
+        <h2>Registrar Nueva Carrera</h2>
+        <form th:action="@{/carreras/guardar}" th:object="${carrera}" method="post">
+            <div class="form-group">
+                <label for="codigo">Código:</label>
+                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
             </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="cantidadAnios">Cantidad de Años:</label>
+                <input type="text" class="form-control" id="cantidadAnios" th:field="*{cantidadAnios}" required>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" class="form-control" id="estado" th:field="*{estado}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
 
-            <div class="col-md-6">
-                <h3>Nueva Materia</h3>
-                <form action="/materias/guardar" method="post">
-                    <div class="mb-3">
-                        <label for="codigo" class="form-label">Código</label>
-                        <input type="number" class="form-control" id="codigo" name="codigo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="curso" class="form-label">Curso</label>
-                        <input type="text" class="form-control" id="curso" name="curso" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cantidadHoras" class="form-label">Cantidad de Horas</label>
-                        <input type="number" class="form-control" id="cantidadHoras" name="cantidadHoras" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="modalidad" class="form-label">Modalidad</label>
-                        <select class="form-control" id="modalidad" name="modalidad" required>
-                            <option value="Presencial">Presencial</option>
-                            <option value="Virtual">Virtual</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="docente" class="form-label">Docente</label>
-                        <select class="form-control" id="docente" name="docente" required>
-                            <option th:each="docente : ${docentes}" th:value="${docente.legajo}" th:text="${docente.nombre}"></option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="carrera" class="form-label">Carrera</label>
-                        <select class="form-control" id="carrera" name="carrera" required>
-                            <option th:each="carrera : ${carreras}" th:value="${carrera.codigo}" th:text="${carrera.nombre}"></option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Guardar Materia</button>
-                </form>
+        <h2>Registrar Nueva Materia</h2>
+        <form th:action="@{/materias/guardar}" th:object="${materia}" method="post">
+            <div class="form-group">
+                <label for="codigo">Código:</label>
+                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <input type="text" class="form-control" id="curso" th:field="*{curso}" required>
+            </div>
+            <div class="form-group">
+                <label for="cantidadHoras">Cantidad de Horas:</label>
+                <input type="text" class="form-control" id="cantidadHoras" th:field="*{cantidadHoras}" required>
+            </div>
+            <div class="form-group">
+                <label for="modalidad">Modalidad:</label>
+                <input type="text" class="form-control" id="modalidad" th:field="*{modalidad}" required>
+            </div>
+            <div class="form-group">
+                <label for="docente">Docente:</label>
+                <select class="form-control" id="docente" th:field="*{docente.legajo}" required>
+                    <option th:each="docente : ${docentes}" th:value="${docente.legajo}" th:text="${docente.nombre} + ' ' + ${docente.apellido}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="carrera">Carrera:</label>
+                <select class="form-control" id="carrera" th:field="*{carrera.codigo}" required>
+                    <option th:each="carrera : ${carreras}" th:value="${carrera.codigo}" th:text="${carrera.nombre}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
     </div>
 
-    <footer th:replace="layouts/footer :: footer"></footer>
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

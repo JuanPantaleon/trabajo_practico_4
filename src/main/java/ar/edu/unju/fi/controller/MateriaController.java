@@ -8,59 +8,53 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import ar.edu.unju.fi.collections.CarreraCollection;
+import ar.edu.unju.fi.collections.DocenteCollection;
 import ar.edu.unju.fi.collections.MateriaCollection;
 import ar.edu.unju.fi.model.Materia;
 
 @Controller
 @RequestMapping("/materias")
 public class MateriaController {
-	@Autowired
-    private MateriaCollection materiaCollection;
-
-    @Autowired
-    private DocenteCollection docenteCollection;
-
-    @Autowired
-    private CarreraCollection carreraCollection;
-
-    @GetMapping("/listar")
+	@GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("materias", materiaCollection.listar());
+        model.addAttribute("materias", MateriaCollection.listar());
         return "listados";
     }
 
     @GetMapping("/nuevo")
     public String nuevo(Model model) {
         model.addAttribute("materia", new Materia());
-        model.addAttribute("docentes", docenteCollection.listar());
-        model.addAttribute("carreras", carreraCollection.listar());
+        model.addAttribute("docentes", DocenteCollection.listar());
+        model.addAttribute("carreras", CarreraCollection.listar());
         return "registros";
     }
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("materia") Materia materia) {
-        materiaCollection.agregar(materia);
+        MateriaCollection.agregar(materia);
         return "redirect:/materias/listar";
     }
 
     @GetMapping("/editar/{codigo}")
     public String editar(@PathVariable("codigo") String codigo, Model model) {
-        Materia materia = materiaCollection.buscar(codigo);
+        Materia materia = MateriaCollection.buscar(codigo);
         model.addAttribute("materia", materia);
-        model.addAttribute("docentes", docenteCollection.listar());
-        model.addAttribute("carreras", carreraCollection.listar());
+        model.addAttribute("docentes", DocenteCollection.listar());
+        model.addAttribute("carreras", CarreraCollection.listar());
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("materia") Materia materia) {
-        materiaCollection.modificar(materia);
+        MateriaCollection.modificar(materia);
         return "redirect:/materias/listar";
     }
 
     @GetMapping("/eliminar/{codigo}")
     public String eliminar(@PathVariable("codigo") String codigo) {
-        materiaCollection.eliminar(codigo);
+        MateriaCollection.eliminar(codigo);
         return "redirect:/materias/listar";
     }
 }

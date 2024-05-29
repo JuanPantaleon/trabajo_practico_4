@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,9 @@ import ar.edu.unju.fi.model.Alumno;
 @RequestMapping("/alumnos")
 
 public class AlumnoController {
-	@Autowired
-    private AlumnoCollection alumnoCollection;
-
-    @GetMapping("/listar")
+	@GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("alumnos", alumnoCollection.listar());
+        model.addAttribute("alumnos", AlumnoCollection.listar());
         return "listados";
     }
 
@@ -32,26 +28,26 @@ public class AlumnoController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("alumno") Alumno alumno) {
-        alumnoCollection.agregar(alumno);
+        AlumnoCollection.agregar(alumno);
         return "redirect:/alumnos/listar";
     }
 
     @GetMapping("/editar/{dni}")
     public String editar(@PathVariable("dni") int dni, Model model) {
-        Alumno alumno = alumnoCollection.buscar(dni);
+        Alumno alumno = AlumnoCollection.buscar(dni);
         model.addAttribute("alumno", alumno);
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("alumno") Alumno alumno) {
-        alumnoCollection.modificar(alumno);
+        AlumnoCollection.modificar(alumno);
         return "redirect:/alumnos/listar";
     }
 
     @GetMapping("/eliminar/{dni}")
     public String eliminar(@PathVariable("dni") int dni) {
-        alumnoCollection.eliminar(dni);
+        AlumnoCollection.eliminar(dni);
         return "redirect:/alumnos/listar";
     }
 }

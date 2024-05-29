@@ -14,12 +14,9 @@ import ar.edu.unju.fi.model.Carrera;
 @Controller
 @RequestMapping("/carreras")
 public class CarreraController {
-	@Autowired
-    private CarreraCollection carreraCollection;
-
-    @GetMapping("/listar")
+	@GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("carreras", carreraCollection.listar());
+        model.addAttribute("carreras", CarreraCollection.listar());
         return "listados";
     }
 
@@ -31,26 +28,26 @@ public class CarreraController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("carrera") Carrera carrera) {
-        carreraCollection.agregar(carrera);
+        CarreraCollection.agregar(carrera);
         return "redirect:/carreras/listar";
     }
 
     @GetMapping("/editar/{codigo}")
     public String editar(@PathVariable("codigo") String codigo, Model model) {
-        Carrera carrera = carreraCollection.buscar(codigo);
+        Carrera carrera = CarreraCollection.buscar(codigo);
         model.addAttribute("carrera", carrera);
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("carrera") Carrera carrera) {
-        carreraCollection.modificar(carrera);
+        CarreraCollection.modificar(carrera);
         return "redirect:/carreras/listar";
     }
 
     @GetMapping("/eliminar/{codigo}")
     public String eliminar(@PathVariable("codigo") String codigo) {
-        carreraCollection.eliminar(codigo);
+        CarreraCollection.eliminar(codigo);
         return "redirect:/carreras/listar";
     }
-}
+ }

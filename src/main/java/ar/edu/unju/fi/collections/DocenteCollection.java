@@ -21,17 +21,13 @@ public class DocenteCollection {
     }
 
     public static void modificar(Docente docente) {
-        Docente existente = buscar(docente.getLegajo());
-        if (existente != null) {
-            int index = docentes.indexOf(existente);
+        int index = docentes.indexOf(buscar(docente.getLegajo()));
+        if (index >= 0) {
             docentes.set(index, docente);
         }
     }
 
     public static void eliminar(String legajo) {
-        Docente docente = buscar(legajo);
-        if (docente != null) {
-            docentes.remove(docente);
-        }
+        docentes.removeIf(d -> d.getLegajo() == legajo);
     }
 }

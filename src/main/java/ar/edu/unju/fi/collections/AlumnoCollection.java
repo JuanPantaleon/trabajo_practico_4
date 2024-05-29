@@ -21,17 +21,13 @@ public class AlumnoCollection {
     }
 
     public static void modificar(Alumno alumno) {
-        Alumno existente = buscar(alumno.getDni());
-        if (existente != null) {
-            int index = alumnos.indexOf(existente);
+        int index = alumnos.indexOf(buscar(alumno.getDni()));
+        if (index >= 0) {
             alumnos.set(index, alumno);
         }
     }
 
     public static void eliminar(int dni) {
-        Alumno alumno = buscar(dni);
-        if (alumno != null) {
-            alumnos.remove(alumno);
-        }
+        alumnos.removeIf(a -> a.getDni() == dni);
     }
 }

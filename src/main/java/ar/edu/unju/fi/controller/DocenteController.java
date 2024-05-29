@@ -14,12 +14,9 @@ import ar.edu.unju.fi.model.Docente;
 @Controller
 @RequestMapping("/docentes")
 public class DocenteController {
-	@Autowired
-    private DocenteCollection docenteCollection;
-
-    @GetMapping("/listar")
+	@GetMapping("/listar")
     public String listar(Model model) {
-        model.addAttribute("docentes", docenteCollection.listar());
+        model.addAttribute("docentes", DocenteCollection.listar());
         return "listados";
     }
 
@@ -31,26 +28,26 @@ public class DocenteController {
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute("docente") Docente docente) {
-        docenteCollection.agregar(docente);
+        DocenteCollection.agregar(docente);
         return "redirect:/docentes/listar";
     }
 
     @GetMapping("/editar/{legajo}")
     public String editar(@PathVariable("legajo") String legajo, Model model) {
-        Docente docente = docenteCollection.buscar(legajo);
+        Docente docente = DocenteCollection.buscar(legajo);
         model.addAttribute("docente", docente);
         return "registros";
     }
 
     @PostMapping("/actualizar")
     public String actualizar(@ModelAttribute("docente") Docente docente) {
-        docenteCollection.modificar(docente);
+        DocenteCollection.modificar(docente);
         return "redirect:/docentes/listar";
     }
 
     @GetMapping("/eliminar/{legajo}")
     public String eliminar(@PathVariable("legajo") String legajo) {
-        docenteCollection.eliminar(legajo);
+        DocenteCollection.eliminar(legajo);
         return "redirect:/docentes/listar";
     }
 }

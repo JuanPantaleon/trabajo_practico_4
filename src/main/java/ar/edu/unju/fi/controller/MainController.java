@@ -1,7 +1,19 @@
 package ar.edu.unju.fi.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import ar.edu.unju.fi.collections.AlumnoCollection;
+import ar.edu.unju.fi.collections.CarreraCollection;
+import ar.edu.unju.fi.collections.DocenteCollection;
+import ar.edu.unju.fi.collections.MateriaCollection;
+import ar.edu.unju.fi.model.Alumno;
+import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.model.Docente;
+import ar.edu.unju.fi.model.Materia;
 
 @Controller
 public class MainController {
@@ -11,12 +23,22 @@ public class MainController {
 	  }
 	
 	@GetMapping("/registros")
-	public String getRegistros() {
+	public String registros(Model model) {
 		return"registros";
 	}
 	
 	@GetMapping("/listados")
-	public String getListados() {
-		return"listados";
-	}
+	public String listados(Model model) {
+        List<Alumno> alumnos = AlumnoCollection.listar();
+        List<Docente> docentes = DocenteCollection.listar();
+        List<Carrera> carreras = CarreraCollection.listar();
+        List<Materia> materias = MateriaCollection.listar();
+
+        model.addAttribute("alumnos", alumnos);
+        model.addAttribute("docentes", docentes);
+        model.addAttribute("carreras", carreras);
+        model.addAttribute("materias", materias);
+
+        return "listados";
+    }
 }
