@@ -3,9 +3,12 @@ package ar.edu.unju.fi.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unju.fi.model.Alumno;
+import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.model.Alumno;
+@Service
 public class AlumnoCollection {
+	
 	private static List<Alumno> alumnos = new ArrayList<>();
 
     public static List<Alumno> listar() {
@@ -30,4 +33,7 @@ public class AlumnoCollection {
     public static void eliminar(int dni) {
         alumnos.removeIf(a -> a.getDni() == dni);
     }
+    
+    
+    
 }

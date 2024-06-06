@@ -39,15 +39,5 @@ public class AlumnoController {
         return "registros";
     }
 
-    @PostMapping("/actualizar")
-    public String actualizar(@ModelAttribute("alumno") Alumno alumno) {
-        AlumnoCollection.modificar(alumno);
-        return "redirect:/alumnos/listar";
-    }
-
-    @GetMapping("/eliminar/{dni}")
-    public String eliminar(@PathVariable("dni") int dni) {
-        AlumnoCollection.eliminar(dni);
-        return "redirect:/alumnos/listar";
-    }
+    
 }

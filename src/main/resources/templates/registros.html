@@ -11,31 +11,37 @@
 		            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		                <span class="navbar-toggler-icon"></span>
 		            </button>
-		            <div class="collapse navbar-collapse" id="navbarNav">
-		                <ul class="navbar-nav">
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="#">Inicio</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="#">Acerca de</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="#">Carreras</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="#">Noticias</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a class="nav-link" href="#">Contacto</a>
-		                    </li>
-		                </ul>
-		            </div>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						                <ul class="navbar-nav">
+						                    <li class="nav-item">
+						                        <a class="nav-link" href="/index">Inicio</a>
+						                    </li>
+						                    <li class="nav-item">
+						                        <a class="nav-link" href="#">Acerca de</a>
+						                    </li>
+						                    <li class="nav-item">
+						                        <a class="nav-link" href="#">Carreras</a>
+						                    </li>
+						                    <li class="nav-item">
+						                        <a class="nav-link" href="#">Noticias</a>
+						                    </li>
+						                    <li class="nav-item">
+						                        <a class="nav-link" href="#">Contacto</a>
+						                    </li>
+											<li class="nav-item">
+												<a class="nav-link" href="/listados">Listados</a>
+											</li>
+											<li class="nav-item">
+											<a class="nav-link" href="/registros">Registros</a>
+											</li>
+						                </ul>
+						            </div>
 		        </div>
 		    </nav>
 			
     <div class="container my-4">
         <h2>Registrar Nuevo Alumno</h2>
-        <form th:action="@{/alumnos/guardar}" th:object="${alumno}" method="post">
+        <form th:action="@{/alumnos/guardar}" th:object="${nuevoAlumno}" method="post">
             <div class="form-group">
                 <label for="dni">DNI:</label>
                 <input type="text" class="form-control" id="dni" th:field="*{dni}" required>
@@ -72,7 +78,7 @@
         </form>
 
         <h2>Registrar Nuevo Docente</h2>
-        <form th:action="@{/docentes/guardar}" th:object="${docente}" method="post">
+        <form th:action="@{/docentes/guardar}" th:object="${nuevoDocente}" method="post">
             <div class="form-group">
                 <label for="legajo">Legajo:</label>
                 <input type="text" class="form-control" id="legajo" th:field="*{legajo}" required>
@@ -97,7 +103,7 @@
         </form>
 
         <h2>Registrar Nueva Carrera</h2>
-        <form th:action="@{/carreras/guardar}" th:object="${carrera}" method="post">
+        <form th:action="@{/carreras/guardar}" th:object="${nuevaCarrera}" method="post">
             <div class="form-group">
                 <label for="codigo">Código:</label>
                 <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
@@ -118,7 +124,7 @@
         </form>
 
         <h2>Registrar Nueva Materia</h2>
-        <form th:action="@{/materias/guardar}" th:object="${materia}" method="post">
+        <form th:action="@{/materias/editar}" th:object="${nuevaMateria}" method="post">
             <div class="form-group">
                 <label for="codigo">Código:</label>
                 <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>

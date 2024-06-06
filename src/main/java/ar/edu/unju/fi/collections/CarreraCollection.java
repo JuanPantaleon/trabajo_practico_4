@@ -3,8 +3,10 @@ package ar.edu.unju.fi.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unju.fi.model.Carrera;
+import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.model.Carrera;
+@Component
 public class CarreraCollection {
 	private static List<Carrera> carreras = new ArrayList<>();
 
@@ -30,4 +32,6 @@ public class CarreraCollection {
     public static void eliminar(String codigo) {
         carreras.removeIf(c -> c.getCodigo() == codigo);
     }
+    
+   
 }
